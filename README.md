@@ -102,4 +102,4 @@ def add_income(request):
 
 - Add a Profile section
 - Create payment reminders/subscription plans
-- Fix user authentication
+- Fix User authentication
