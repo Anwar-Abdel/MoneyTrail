@@ -1,0 +1,22 @@
+databases:
+  - name: moneytrail
+    plan: free
+    databaseName: moneytrail
+    user: moneytrail_user
+
+services:
+  - type: web
+    plan: free
+    name: moneytrail
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn moneytrail.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: moneytrail
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4 
