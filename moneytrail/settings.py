@@ -39,7 +39,7 @@ if not DEBUG:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['', '']
+ALLOWED_HOSTS = ['https://moneytrail-ty5a.onrender.com/']
 
 
 # Application definition
