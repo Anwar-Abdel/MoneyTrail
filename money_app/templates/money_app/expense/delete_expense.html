@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Expense</title>
+    {% include 'money_app/navbar.html' %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Expense</h1>
+        
+        <p>Are you sure you want to delete the following income entry?</p>
+
+        <table class="table">
+            <tr>
+                <th>Amount:</th>
+                <td>${{ expense.amount }}</td>
+            </tr>
+            <tr>
+                <th>Source:</th>
+                <td>{{ expense.source }}</td>
+            </tr>
+            <tr>
+                <th>Date:</th>
+                <td>{{ expense.date }}</td>
+            </tr>
+        </table>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+            <a href="{% url 'expense_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import User, Expense, Income
+from decimal import Decimal
+from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, get_user
 from .forms import SignUpForm, IncomeForm, ExpenseForm
@@ -28,7 +30,25 @@ def user_login(request):
     return render(request, 'money_app/login.html')
 
 def home(request):
-    return render(request, 'money_app/home.html')
+    total_income = Income.objects.filter(user=request.user).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    total_expenses = Expense.objects.filter(user=request.user).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    current_balance = total_income - total_expenses
+
+    recent_incomes = Income.objects.filter(user=request.user).values('date', 'source', 'amount')
+    recent_expenses = Expense.objects.filter(user=request.user).values('date', 'description', 'category', 'amount')
+
+    recent_transactions = list(recent_incomes) + list(recent_expenses)
+
+    recent_transactions.sort(key=lambda x: x['date'], reverse=True)
+    recent_transactions = recent_transactions[:5]
+
+    context = {
+        'total_income': total_income,
+        'total_expenses': total_expenses,
+        'current_balance': current_balance,
+        'recent_transactions': recent_transactions,
+    }
+    return render(request, 'money_app/home.html', context)
 
 
 #--------GET----------#
@@ -38,7 +58,7 @@ def income_list(request):
 
 def expense_list(request):
     expense = Expense.objects.all()
-    return render(request, 'money_app/expense.html', {'expense': expense})
+    return render(request, 'money_app/expense/expense_list.html', {'expense': expense})
 
 
 #--------POST----------#
@@ -66,7 +86,7 @@ def add_expense(request):
             return redirect('expense_list')
     else:
         form = ExpenseForm()
-    return render(request, 'money_app/expense/expense_list.html', {'form': form})
+    return render(request, 'money_app/expense/add_expense.html', {'form': form})
 
 
 #--------POST----------#

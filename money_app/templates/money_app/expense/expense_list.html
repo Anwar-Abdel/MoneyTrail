@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense List</title>
+    {% include 'money_app/navbar.html' %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
@@ -17,7 +18,8 @@
             <thead>
                 <tr>
                     <th>Amount</th>
-                    <th>Source</th>
+                    <th>Description</th>
+                    <th>Category</th>
                     <th>Date</th>
                     <th>Actions</th>
                 </tr>
@@ -26,7 +28,8 @@
                 {% for expense in expense %}
                 <tr>
                     <td>${{ expense.amount }}</td>
-                    <td>{{ expense.source }}</td>
+                    <td>{{ expense.description }}</td>
+                    <td>{{ expense.category }}</td>
                     <td>{{ expense.date }}</td>
                     <td>
                         <a href="{% url 'edit_expense' expense.id %}" class="btn btn-sm btn-warning">Edit</a>
@@ -35,11 +38,13 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="4">No expense entries found.</td>
+                    <td colspan="5">No expense entries found.</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
     </div>
 </body>
 </html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Income</title>
+    <title>Add Expense</title>
+    {% include 'money_app/navbar.html' %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
@@ -18,18 +19,22 @@
                 {{ form.amount }}
             </div>
             <div class="form-group">
-                <label for="id_source">Source:</label>
-                {{ form.source }}
+                <label for="id_description">Description:</label>
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                <label for="id_category">Category:</label>
+                {{ form.category }}
             </div>
             <div class="form-group">
                 <label for="id_date">Date:</label>
                 {{ form.date }}
             </div>
 
-            <button type="submit" class="btn btn-primary">Add Income</button>
+            <button type="submit" class="btn btn-primary">Add Expense</button>
         </form>
 
-        <p><a href="{% url 'income_list' %}">Back to Expense List</a></p>
+        <p><a href="{% url 'expense_list' %}">Back to Expense List</a></p>
     </div>
 </body>
 </html>

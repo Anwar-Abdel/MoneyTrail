@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Income List</title>
+    {% include 'money_app/navbar.html' %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
@@ -40,6 +41,8 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
     </div>
 </body>
 </html>
