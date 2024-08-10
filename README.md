@@ -57,7 +57,7 @@
 - Python
 - Django
 - PostgreSQL
-
+- Plotly
 
 ## ERD
 
