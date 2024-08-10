@@ -98,4 +98,7 @@ def add_income(request):
 <img src="https://github.com/user-attachments/assets/5be3aead-ed59-4f0a-98c1-eaf0ba2237ba" alt="image" width="400"/>
 
 
+## Future Updates
 
+- Add a Profile section
+- Create payment reminders/subscription plans
