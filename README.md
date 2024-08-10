@@ -4,6 +4,9 @@
 
 **MoneyTrail** is a finance tracker application designed to help users manage their income and expenses. Users can track their financial activities, categorize their expenses, and have a clear view of their financial status.
 
+## Socials
+[Website](https://github.com/Anwar-Abdel/MoneyTrail)
+
 ## User Stories
 
 - The user can sign up and login
@@ -17,7 +20,7 @@
 ![image](https://github.com/user-attachments/assets/e98116cf-71c9-406d-9e91-2584f74d2e3e)
 
 
-## Installation Guide
+## Getting started
 
 1. **Clone the repository:**
    
@@ -70,11 +73,32 @@
 **Expense**
 - amount, description, category, and date
 
+## Code Snippets
+
+```python @login_required
+def add_income(request):
+    if request.method == 'POST':
+        form = IncomeForm(request.POST)
+        if form.is_valid():
+            income = form.save(commit=False)
+            income.user = get_user(request)
+            income.save()
+            return redirect('income_list')
+    else:
+        form = IncomeForm()
+    return render(request, 'money_app/incomes/add_income.html', {'form': form})
+
+```
+
+## Final Product
 
 
+<img src="https://github.com/user-attachments/assets/485ad219-1d95-4105-a003-5f0f9ad9bbb6" alt="image" width="700"/>
+<img src="https://github.com/user-attachments/assets/a9ae3c29-3f9b-40ae-ba04-8af02aba289a" alt="image" width="500"/>
+<img src="https://github.com/user-attachments/assets/5be3aead-ed59-4f0a-98c1-eaf0ba2237ba" alt="image" width="400"/>
 
 
+## Future Updates
 
-
-
-
+- Add a Profile section
+- Create payment reminders/subscription plans
