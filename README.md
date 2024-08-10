@@ -14,6 +14,9 @@
 
 ## Wireframe
 
+![image](https://github.com/user-attachments/assets/e98116cf-71c9-406d-9e91-2584f74d2e3e)
+
+
 ## Installation Guide
 
 1. **Clone the repository:**
