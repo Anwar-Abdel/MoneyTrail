@@ -103,3 +103,7 @@ def add_income(request):
 - Add a Profile section
 - Create payment reminders/subscription plans
 - Fix User authentication
+
+## Credits
+
+My GA instructors [Rome Bell ](https://github.com/romebell) and [Alo](https://github.com/DigitalPhoneme)
