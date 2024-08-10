@@ -82,7 +82,7 @@ def add_income(request):
     if request.method == 'POST':
         form = IncomeForm(request.POST)
         if form.is_valid():
-            income = form.save()
+            income = form.save(commit=False)
             income.save()
             return redirect('income_list')
     else:
@@ -93,12 +93,13 @@ def add_expense(request):
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
         if form.is_valid():
-            expense = form.save()
+            expense = form.save(commit=False)
             expense.save()
             return redirect('expense_list')
     else:
         form = ExpenseForm()
     return render(request, 'money_app/expense/add_expense.html', {'form': form})
+
 
 
 #--------POST----------#
