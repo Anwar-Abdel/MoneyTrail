@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to MoneyTrail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to MoneyTrail</h1>
+    </header>
+    <p>Track your expenses and manage your finances with ease.
+        MoneyTrail allows you to quickly add and categorize your income and expenses,
+        giving you a clear overview of your financial situation.</p>
+    
+    <div class="buttons">
+        <a href="{% url 'signup' %}" class="button">Sign Up</a>
+        <a href="{% url 'login' %}" class="button">Login</a>
+    </div>
+
+</body>
+</html>

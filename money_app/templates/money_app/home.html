@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - MoneyTrail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user.username }}!</h1>
+        <div class="overview">
+            <div class="balance">
+                <h2>Current Balance</h2>
+                <p>${{ current_balance }}</p>
+            </div>
+            <div class="totals">
+                <h3>Total Income: ${{ total_income }}</h3>
+                <h3>Total Expenses: ${{ total_expenses }}</h3>
+            </div>
+        </div>
+        <div class="quick-actions">
+            <a href="{% url 'add_income' %}" class="btn btn-primary">Add New Income</a>
+            <a href="{% url 'add_expense' %}" class="btn btn-primary">Add New Expense</a>
+        </div>
+        <div class="recent-transactions">
+            <h2>Recent Transactions</h2>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                </tr>
+                {% for transaction in recent_transactions %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>{{ transaction.category }}</td>
+                    <td>${{ transaction.amount }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="charts">
+            
+            <h2>Income vs. Expenses</h2>
+            <div id="income-expense-chart"></div>
+
+            <h2>Expense Categories</h2>
+            <div id="expense-categories-chart"></div>
+
+        </div>
+    </div>
+</body>
+</html>

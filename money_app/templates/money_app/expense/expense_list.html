@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense List</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Expense List</h1>
+
+        <a href="{% url 'add_expense' %}" class="btn btn-primary">Add New Expense</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Source</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expense %}
+                <tr>
+                    <td>${{ expense.amount }}</td>
+                    <td>{{ expense.source }}</td>
+                    <td>{{ expense.date }}</td>
+                    <td>
+                        <a href="{% url 'edit_expense' expense.id %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'delete_expense' expense.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No expense entries found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

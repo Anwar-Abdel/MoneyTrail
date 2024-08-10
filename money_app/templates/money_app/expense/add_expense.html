@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Income</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Expense</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_amount">Amount:</label>
+                {{ form.amount }}
+            </div>
+            <div class="form-group">
+                <label for="id_source">Source:</label>
+                {{ form.source }}
+            </div>
+            <div class="form-group">
+                <label for="id_date">Date:</label>
+                {{ form.date }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Income</button>
+        </form>
+
+        <p><a href="{% url 'income_list' %}">Back to Expense List</a></p>
+    </div>
+</body>
+</html>
