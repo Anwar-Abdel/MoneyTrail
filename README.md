@@ -59,6 +59,16 @@
 - PostgreSQL
 
 
+## ERD
+
+**User**
+- username, email, and password
+
+**Income**
+- amount, source, and date
+
+**Expense**
+- amount, description, category, and date
 
 
 
