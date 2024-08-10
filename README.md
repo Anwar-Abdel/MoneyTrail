@@ -86,4 +86,16 @@ def add_income(request):
             return redirect('income_list')
     else:
         form = IncomeForm()
-    return render(request, 'money_app/incomes/add_income.html', {'form': form})```
+    return render(request, 'money_app/incomes/add_income.html', {'form': form})
+
+```
+
+## Final Product
+
+
+<img src="https://github.com/user-attachments/assets/485ad219-1d95-4105-a003-5f0f9ad9bbb6" alt="image" width="700"/>
+<img src="https://github.com/user-attachments/assets/a9ae3c29-3f9b-40ae-ba04-8af02aba289a" alt="image" width="500"/>
+<img src="https://github.com/user-attachments/assets/5be3aead-ed59-4f0a-98c1-eaf0ba2237ba" alt="image" width="400"/>
+
+
+
