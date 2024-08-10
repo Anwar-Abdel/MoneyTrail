@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, get_user
 from .forms import SignUpForm, IncomeForm, ExpenseForm
 from django.contrib.auth.decorators import login_required
+import plotly.express as px
 
 
 #--------VIEWS----------#
@@ -49,6 +50,26 @@ def home(request):
         'recent_transactions': recent_transactions,
     }
     return render(request, 'money_app/home.html', context)
+
+
+def expense_pie_chart(request):
+    expenses = Expense.objects.filter(user=request.user)
+    categories = ['food', 'transport', 'utilities', 'entertainment', 'other']
+    
+    expense_data = []
+    for category in categories:
+        total = expenses.filter(category=category).aggregate(Sum('amount'))['amount__sum'] or 0
+        expense_data.append({'category': category, 'total': total})
+
+    figure = px.pie(
+        names=[item['category'] for item in expense_data],
+        values=[item['total'] for item in expense_data],
+        title="Expenses by Category",
+        labels={'category': 'Category', 'total': 'Total Expenses'}
+    )
+    chart = figure.to_html()
+
+    return render(request, 'money_app/expense/expense_pie_chart.html', {'chart': chart})
 
 
 #--------GET----------#

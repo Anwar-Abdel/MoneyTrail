@@ -57,8 +57,10 @@
         </div>
 
         <div class="charts">
-            <h2>Income vs. Expenses</h2>
-            <div id="income-expense-chart"></div>
+            <h2>Expense pie chart</h2>
+            <a href="{% url 'expense_pie_chart' %}">
+                <img src="{% static 'images/pie_chart_icon.png' %}" alt="Pie Chart" style="width: 200px;">
+            </a>
         </div>
     </div>
 </body>
