@@ -106,4 +106,4 @@ def add_income(request):
 
 ## Credits
 
-My GA instructors [Rome Bell ](https://github.com/romebell) and [Alo](https://github.com/DigitalPhoneme)
+I would like to thank my GA instructors [Rome Bell ](https://github.com/romebell) and [Alo](https://github.com/DigitalPhoneme)
